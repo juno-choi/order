@@ -1,4 +1,4 @@
-package com.simol.homework.global.application;
+package com.simol.homework.application;
 
 public interface MainApplication {
     void run();
