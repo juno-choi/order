@@ -2,9 +2,9 @@ package com.simol.homework;
 
 import com.simol.homework.application.MainApplication;
 import com.simol.homework.application.MainOrderApplication;
-import com.simol.homework.global.config.MainConfig;
-import com.simol.homework.global.io.ConsoleInputHandler;
-import com.simol.homework.global.io.ConsoleOutputHandler;
+import com.simol.homework.application.config.MainConfig;
+import com.simol.homework.application.io.ConsoleInputHandler;
+import com.simol.homework.application.io.ConsoleOutputHandler;
 import com.simol.homework.product.repository.ProductRepositoryImpl;
 import com.simol.homework.product.service.ProductServiceImpl;
 

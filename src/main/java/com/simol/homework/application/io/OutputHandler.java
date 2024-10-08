@@ -1,4 +1,4 @@
-package com.simol.homework.global.io;
+package com.simol.homework.application.io;
 
 import com.simol.homework.product.entity.Product;
 

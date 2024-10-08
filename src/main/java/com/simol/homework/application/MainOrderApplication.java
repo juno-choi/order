@@ -1,8 +1,8 @@
 package com.simol.homework.application;
 
-import com.simol.homework.global.config.MainConfig;
-import com.simol.homework.global.io.InputHandler;
-import com.simol.homework.global.io.OutputHandler;
+import com.simol.homework.application.config.MainConfig;
+import com.simol.homework.application.io.InputHandler;
+import com.simol.homework.application.io.OutputHandler;
 import com.simol.homework.order.enums.OrderApplicationType;
 import com.simol.homework.product.entity.Product;
 import com.simol.homework.product.service.ProductService;

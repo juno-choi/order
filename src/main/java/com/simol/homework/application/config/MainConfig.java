@@ -1,7 +1,7 @@
-package com.simol.homework.global.config;
+package com.simol.homework.application.config;
 
-import com.simol.homework.global.io.InputHandler;
-import com.simol.homework.global.io.OutputHandler;
+import com.simol.homework.application.io.InputHandler;
+import com.simol.homework.application.io.OutputHandler;
 import com.simol.homework.product.service.ProductService;
 
 public class MainConfig {
