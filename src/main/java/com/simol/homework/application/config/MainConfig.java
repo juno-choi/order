@@ -1,29 +1,31 @@
 package com.simol.homework.application.config;
 
+import com.simol.homework.application.console.service.ConsoleService;
 import com.simol.homework.application.io.InputHandler;
 import com.simol.homework.application.io.OutputHandler;
+import com.simol.homework.cart.service.CartService;
 import com.simol.homework.product.service.ProductService;
 
 public class MainConfig {
-    private final InputHandler inputHandler;
-    private final OutputHandler outputHandler;
+    private final ConsoleService consoleService;
     private final ProductService productService;
+    private final CartService cartService;
 
-    public MainConfig(InputHandler inputHandler, OutputHandler outputHandler, ProductService productService) {
-        this.inputHandler = inputHandler;
-        this.outputHandler = outputHandler;
+    public MainConfig(ConsoleService consoleService,ProductService productService, CartService cartService) {
+        this.consoleService = consoleService;
         this.productService = productService;
-    }
-
-    public InputHandler getInputHandler() {
-        return inputHandler;
-    }
-
-    public OutputHandler getOutputHandler() {
-        return outputHandler;
+        this.cartService = cartService;
     }
 
     public ProductService getProductService() {
         return productService;
+    }
+
+    public CartService getCartService() {
+        return cartService;
+    }
+
+    public ConsoleService getConsoleService() {
+        return consoleService;
     }
 }

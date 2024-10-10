@@ -1,9 +1,8 @@
-package com.simol.homework.order.enums;
+package com.simol.homework.application.console.enums;
 
 public enum OrderApplicationType {
     ORDER("주문"),
     QUITE("주문종료"),
-    WRONG_REQUEST("잘못된 입력"),
     ;
     private final String description;
 
@@ -18,6 +17,6 @@ public enum OrderApplicationType {
         if ("o".equals(input) || "order".equals(input)) {
             return ORDER;
         }
-        return WRONG_REQUEST;
+        throw new RuntimeException("잘못된 입력입니다.");
     }
 }

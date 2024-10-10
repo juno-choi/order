@@ -1,62 +1,45 @@
 package com.simol.homework.application;
 
 import com.simol.homework.application.config.MainConfig;
-import com.simol.homework.application.io.InputHandler;
-import com.simol.homework.application.io.OutputHandler;
-import com.simol.homework.order.enums.OrderApplicationType;
+import com.simol.homework.application.console.service.ConsoleService;
+import com.simol.homework.cart.service.CartService;
+import com.simol.homework.application.console.enums.OrderApplicationType;
+import com.simol.homework.cart.model.Cart;
+import com.simol.homework.cart.model.OrderInfo;
 import com.simol.homework.product.model.Product;
 import com.simol.homework.product.service.ProductService;
 
 import java.util.List;
 
 public class MainOrderApplication implements MainApplication, MainInitApplication {
-    private final InputHandler inputHandler;
-    private final OutputHandler outputHandler;
+    private final ConsoleService consoleService;
     private final ProductService productService;
+    private final CartService cartService;
 
     public MainOrderApplication(MainConfig mainConfig) {
-        this.inputHandler = mainConfig.getInputHandler();
-        this.outputHandler = mainConfig.getOutputHandler();
+        this.consoleService = mainConfig.getConsoleService();
         this.productService = mainConfig.getProductService();
+        this.cartService = mainConfig.getCartService();
     }
 
     @Override
     public void run() {
+        OrderApplicationType orderApplicationType = OrderApplicationType.ORDER;
         while (true) {
-            OrderApplicationType orderInitUserInput = orderInit();
-            if (orderInitUserInput == OrderApplicationType.QUITE) {
-                // 프로그램 종료
-                outputHandler.orderEnd();
-                return ;
+            orderApplicationType = consoleService.orderInit();
+            if (orderApplicationType == OrderApplicationType.QUITE) {
+                break;
             }
 
             // 서비스 시작
             List<Product> productList = productService.getProductList();
-            outputHandler.productListPrint(productList);
+            consoleService.printProductList(productList);
 
-            while (true) {
-                String productIdAsString = getProductId();
-                String quantityAsString = getQuantity();
-                if (" ".equals(productIdAsString) && " ".equals(quantityAsString)) {
-                    break;
-                }
-            }
+            List<OrderInfo> orderInfoList = consoleService.getOrderInfoList(productList);
+            Cart cart = Cart.create();
+            cart.addAll(orderInfoList);
+            List<OrderInfo> orderList = cart.getCartList();
+            consoleService.printOrderList(orderList);
         }
-    }
-
-    private String getQuantity() {
-        outputHandler.inputQuantity();
-        return inputHandler.userInput();
-    }
-
-    private String getProductId() {
-        outputHandler.inputProductId();
-        return inputHandler.userInput();
-    }
-
-    private OrderApplicationType orderInit() {
-        outputHandler.userInputOrder();
-        String userInput = inputHandler.userInput();
-        return OrderApplicationType.getTypeByUserInput(userInput);
     }
 }
