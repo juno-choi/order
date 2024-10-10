@@ -1,6 +1,6 @@
 package com.simol.homework.product.repository;
 
-import com.simol.homework.product.entity.Product;
+import com.simol.homework.product.model.Product;
 
 import java.util.*;
 

@@ -12,7 +12,7 @@ public class ConsoleInputHandler implements InputHandler{
     }
 
     @Override
-    public String userInputOrder() {
+    public String userInput() {
         String input;
         try {
             input = reader.readLine();

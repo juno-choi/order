@@ -1,4 +1,4 @@
-package com.simol.homework.product.entity;
+package com.simol.homework.product.model;
 
 public class Product {
     private Long productId;

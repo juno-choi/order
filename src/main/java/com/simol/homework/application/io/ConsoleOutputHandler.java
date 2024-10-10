@@ -1,6 +1,6 @@
 package com.simol.homework.application.io;
 
-import com.simol.homework.product.entity.Product;
+import com.simol.homework.product.model.Product;
 
 import java.util.List;
 
@@ -23,5 +23,15 @@ public class ConsoleOutputHandler implements OutputHandler {
                     .formatted(p.getProductId(), p.getProductName(), p.getProductPrice(), p.getProductStock());
             System.out.println(printString);
         }
+    }
+
+    @Override
+    public void inputProductId() {
+        System.out.print("상품번호 : ");
+    }
+
+    @Override
+    public void inputQuantity() {
+        System.out.print("수량 : ");
     }
 }

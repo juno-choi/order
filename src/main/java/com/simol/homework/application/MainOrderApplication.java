@@ -4,7 +4,7 @@ import com.simol.homework.application.config.MainConfig;
 import com.simol.homework.application.io.InputHandler;
 import com.simol.homework.application.io.OutputHandler;
 import com.simol.homework.order.enums.OrderApplicationType;
-import com.simol.homework.product.entity.Product;
+import com.simol.homework.product.model.Product;
 import com.simol.homework.product.service.ProductService;
 
 import java.util.List;
@@ -34,13 +34,29 @@ public class MainOrderApplication implements MainApplication, MainInitApplicatio
             List<Product> productList = productService.getProductList();
             outputHandler.productListPrint(productList);
 
-
+            while (true) {
+                String productIdAsString = getProductId();
+                String quantityAsString = getQuantity();
+                if (" ".equals(productIdAsString) && " ".equals(quantityAsString)) {
+                    break;
+                }
+            }
         }
+    }
+
+    private String getQuantity() {
+        outputHandler.inputQuantity();
+        return inputHandler.userInput();
+    }
+
+    private String getProductId() {
+        outputHandler.inputProductId();
+        return inputHandler.userInput();
     }
 
     private OrderApplicationType orderInit() {
         outputHandler.userInputOrder();
-        String userInput = inputHandler.userInputOrder();
+        String userInput = inputHandler.userInput();
         return OrderApplicationType.getTypeByUserInput(userInput);
     }
 }

@@ -1,6 +1,6 @@
 package com.simol.homework.application.io;
 
-import com.simol.homework.product.entity.Product;
+import com.simol.homework.product.model.Product;
 
 import java.util.List;
 
@@ -10,4 +10,8 @@ public interface OutputHandler {
     void orderEnd();
 
     void productListPrint(List<Product> productList);
+
+    void inputProductId();
+
+    void inputQuantity();
 }
