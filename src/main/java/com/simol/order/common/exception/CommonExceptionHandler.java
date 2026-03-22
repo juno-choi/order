@@ -3,6 +3,7 @@ package com.simol.order.common.exception;
 import com.simol.order.common.exception.dto.ErrorResponse;
 import jakarta.persistence.PessimisticLockException;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.dao.PessimisticLockingFailureException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
@@ -36,7 +37,7 @@ public class CommonExceptionHandler {
     }
 
     @ExceptionHandler
-    public ResponseEntity<ErrorResponse> handlePessimisticLockException(final PessimisticLockException e) {
+    public ResponseEntity<ErrorResponse> handlePessimisticLockingFailureException(final PessimisticLockingFailureException e) {
         log.error("PessimisticLockException [message : {}]", e.getMessage());
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
             .body(ErrorResponse.of("LOCK_TIMEOUT", "요청이 많아 처리할 수 없습니다. 잠시 후 다시 시도해주세요."));
