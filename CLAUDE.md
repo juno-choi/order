@@ -34,7 +34,7 @@ Spring Modulith 구조로, 각 도메인 모듈은 `com.simol.order.<module>` �
 - `domain/` — 엔티티, 값 객체, 도메인 서비스. 도메인은 자신의 역할만 수행한다.
 - `application/` — 유스케이스 오케스트레이션 (서비스 계층)
 - `infrastructure/` — Repository 구현, 외부 시스템 연동
-- `presentation/` — Controller, DTO
+- `interfaces/` — Controller, DTO
 
 ### 현재 모듈
 
