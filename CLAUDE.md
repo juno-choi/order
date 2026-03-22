@@ -50,3 +50,40 @@ Spring Modulith 구조로, 각 도메인 모듈은 `com.simol.order.<module>` �
 - Builder는 `private`으로 제한 (`@Builder(access = AccessLevel.PRIVATE)`)
 - 정적 팩토리 메서드(`of`, `create` 등)를 통해서만 생성
 - `@Getter` 사용, Setter는 사용하지 않음 — 상태 변경은 도메인 메서드를 통해서만
+
+### 커밋 규칙
+
+[Conventional Commits](CONVENTIONAL_COMMITS.md) 형식을 따른다.
+
+```
+<type>: <한글 설명>
+```
+
+**타입(type):**
+- `feat` — 새로운 기능 추가
+- `fix` — 버그 수정
+- `chore` — 빌드, 설정, 문서 등 비기능 변경
+- `refactor` — 리팩토링 (기능 변경 없음)
+- `test` — 테스트 코드 추가/수정
+
+**규칙:**
+- 제목은 한글로 간결하게 작성 (예: `feat: User 생성 기능 추가`)
+- 본문(body)은 필요한 경우에만 작성
+- 제목은 50자 이내 권장
+
+### 브랜치 전략
+
+```
+feat/<이슈번호>     # 기능 개발 (예: feat/BE-1)
+fix/<이슈번호>      # 버그 수정
+chore/<설명>        # 설정, 문서 등
+```
+
+- `main` 브랜치가 기본 브랜치
+- feature 브랜치에서 작업 후 `main`으로 PR 생성하여 머지
+
+### PR 규칙
+
+- PR 제목은 커밋 규칙과 동일한 Conventional Commits 형식 사용
+- base 브랜치: `main`
+- feature 브랜치 → `main`으로 머지

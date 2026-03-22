@@ -1,0 +1,29 @@
+version: "3.7"
+services:
+  order-mysql:
+    image: mysql:8.0.41
+    container_name: order-mysql
+    environment:
+      - MYSQL_DATABASE=order
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+    ports:
+      - '3306:3306'
+    volumes:
+      - order-mysql-data:/var/lib/mysql
+    networks:
+      - order-network
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p${MYSQL_ROOT_PASSWORD}"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+volumes:
+  order-mysql-data:
+
+networks:
+  order-network:
+    name: order-network
+    driver: bridge

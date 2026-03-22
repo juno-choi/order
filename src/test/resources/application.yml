@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: order
+  profiles:
+    active: test
+  datasource:
+    hikari:
+      # 1. 최대 커넥션 수: 너무 크면 DB 부하 증가.
+      maximum-pool-size: 10
+      # 2. 최소 유휴 커넥션 수: max와 동일하게 설정하여 커넥션 생성/제거 비용 최소화
+      minimum-idle: 10
+      # 3. 커넥션 획득 대기 시간 (ms): 너무 길면 웹 서버 스레드 고갈
+      connection-timeout: 30000 # 30초
+      # 4. 커넥션 최대 생명 주기 (ms): DB 타임아웃보다 짧게 설정 (MySQL은 기본 8시간)
+      max-lifetime: 1800000 # 30분
+
+  # test
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+  # test code에서는 중복 bean은 충돌하지 않도록 처리
+  main:
+    allow-bean-definition-overriding: true
