@@ -23,7 +23,7 @@ public class User {
     @Column(nullable = false)
     private BigDecimal balance;
 
-    public static User of(String name, BigDecimal balance) {
+    public static User of(final String name, final BigDecimal balance) {
         return User.builder()
             .name(name)
             .balance(balance)
